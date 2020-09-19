@@ -297,6 +297,7 @@ void ElevationMapping::pointCloudCallback(const sensor_msgs::PointCloud2& rawPoi
   if (!ignoreRobotMotionUpdates_) {
     boost::shared_ptr<geometry_msgs::PoseWithCovarianceStamped const> poseMessage =
         robotPoseCache_.getElemBeforeTime(lastPointCloudUpdateTime_);
+    //ROS_INFO_STREAM("robot pose timestamp << " << poseMessage->header.stamp << std::endl);
     if (!poseMessage) {
       // Tell the user that either for the timestamp no pose is available or that the buffer is possibly empty
       if (robotPoseCache_.getOldestTime().toSec() > lastPointCloudUpdateTime_.toSec()) {
@@ -462,7 +463,7 @@ bool ElevationMapping::updateMapLocation() {
   kindr::Position3D position3d;
   kindr_ros::convertFromRosGeometryMsg(trackPointTransformed.point, position3d);
   grid_map::Position position = position3d.vector().head(2);
-  map_.move(position);
+  map_.move(position); //!Eric_Wang: Move to track point.
   return true;
 }
 

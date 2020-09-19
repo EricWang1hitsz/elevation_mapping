@@ -1,2 +1,5 @@
 # Noiseless ground truth measurements
-sensor_processor/type: perfect
+#sensor_processor/type: perfect
+sensor_processor/type: structured_light
+sensor_processor/cutoff_min_depth: 0.2
+sensor_processor/cutoff_max_depth: 2.0

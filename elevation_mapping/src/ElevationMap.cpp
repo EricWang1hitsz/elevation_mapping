@@ -138,10 +138,10 @@ bool ElevationMap::add(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr pointCloud, 
       sensorZatLowestScan = sensorTranslation.z();
     }
 
-    // Fuse measurement with elevation map data.
+    // Fuse measurement with elevation map data, one-dimensional Kalman filter.
     elevation =
         (variance * point.z + pointVariance * elevation) / (variance + pointVariance);  // NOLINT(cppcoreguidelines-pro-type-union-access)
-    variance = (pointVariance * variance) / (pointVariance + variance);
+    variance = (pointVariance * variance) / (pointVariance + variance); // Eric_Wang: pointVariance = pointCloudVariance
     // TODO(max): Add color fusion.
     grid_map::colorVectorToValue(point.getRGBVector3i(), color);
     time = scanTimeSinceInitialization;

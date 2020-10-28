@@ -14,7 +14,7 @@ robot_pose_with_covariance_topic: "/pose_pub_node/base_pose"
 robot_pose_cache_size: 200
 ## the elevation map is moved along with the robot following a track point. This is the id of the tf frame in which the track point is defined.
 #track_point_frame_id: "base_link"
-track_point_frame_id: "odom"
+track_point_frame_id: "base_link"  #"odom"
 ## the elevation map is moved along with the robot following a track point. This is the position of the track point in the track_point_frame_id;
 track_point_x: 0.0
 track_point_y: 0.0
@@ -41,3 +41,11 @@ max_variance: 0.01
 mahalanobis_distance_threshold: 2.5
 multi_height_noise: 0.0000009
 
+# Init submap
+initialize_elevation_map:                   true
+initialization_method:                      0   ##PlanarFloorInitializer
+length_in_x_init_submap:                    3.0
+length_in_y_init_submap:                    3.0
+margin_init_submap:                         0.3
+init_submap_height_offset:                  0.01
+target_frame_init_submap:                   foot_print

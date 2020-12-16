@@ -18,8 +18,8 @@
   <!-- filter demo from grid_map_demos -->
   <!-- <include file="$(find elevation_mapping_demos)/launch/filters_demo.launch">
   </include> -->
-  <include file="$(find traversability_estimation)/launch/traversability_estimation_rt.launch">
-  </include>
+  <!-- <include file="$(find traversability_estimation)/launch/traversability_estimation_rt.launch">
+  </include> -->
 
   <!-- Load robot_description param for tf, rviz and gazebo spawn. -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
@@ -43,6 +43,6 @@
   </node>
 
   <!-- Launch RViz with the demo configuration. -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find elevation_mapping_demos)/rviz/turtlebot3_waffle_demo.rviz" /> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find elevation_mapping_demos)/rviz/turtlebot3_waffle_demo.rviz" />
 
 </launch>
